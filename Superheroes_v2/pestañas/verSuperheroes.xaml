@@ -58,11 +58,23 @@
             <Setter Property="Margin"
                     Value="5,10" />
         </Style>
+
+        <Style TargetType="{x:Type DockPanel}"
+               x:Key="colorFondo">
+            <Setter Property="Background"
+                    Value="IndianRed" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=Heroe}" Value="True">
+                    <Setter Property="Background"
+                            Value="PaleGreen" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
 
     <DockPanel x:Name="contenedorPrincipal"
                Margin="10"
-               Background="{Binding Path=Heroe, Converter={StaticResource fondoConverter}}">
+               Style="{StaticResource colorFondo}">
         <DockPanel DockPanel.Dock="Top"
                    LastChildFill="False">
             <TextBlock x:Name="nombreHeroe"
