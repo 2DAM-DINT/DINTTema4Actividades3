@@ -9,8 +9,6 @@
              d:DesignHeight="450"
              d:DesignWidth="800">
     <UserControl.Resources>
-        <heroe:AfiliacionConverter x:Key="converter"></heroe:AfiliacionConverter>
-        
         <Style TargetType="StackPanel">
             <Setter Property="Orientation"
                     Value="Horizontal" />
@@ -79,6 +77,27 @@
                     Value="40" />
             <Setter Property="Margin"
                     Value="5,10" />
+
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                           To="50"
+                                           Duration="0:0:2"></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                             To="40"
+                                             Duration="0:0:1"></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
         </Style>
 
         <Style TargetType="{x:Type DockPanel}"
@@ -105,10 +124,8 @@
             <StackPanel DockPanel.Dock="Right"
                         x:Name="logosHeroe">
 
-                <Image Style="{StaticResource imagenAvengers}"
-                       Visibility="{Binding Path=Vengador, Converter={StaticResource converter}}"/>
-                <Image Style="{StaticResource imagenXmen}"
-                       Visibility="{Binding Path=Xmen, Converter={StaticResource converter}}" />
+                <Image Style="{StaticResource imagenAvengers}" />
+                <Image Style="{StaticResource imagenXmen}" />
             </StackPanel>
         </DockPanel>
         <StackPanel DockPanel.Dock="Bottom"
